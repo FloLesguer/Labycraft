@@ -102,7 +102,7 @@ public class RealGame implements ArdorCraftGame {
     private float globalLight = 1f;
     private boolean isInWater = false;
     private final int[] blockTypeLookup = new int[] {
-            1, 47, 4, 5, 20, 95, 12, 45, 48, 50
+            1, 2, 3, 5, 20, 95, 12, 45, 48, 223
     };
 
     @Override
@@ -411,6 +411,7 @@ public class RealGame implements ArdorCraftGame {
             if (!player.isPlayerSpace(addPos)) {
                 final BlockSide orientation = getOrientation(blockType);
                 blockWorld.setBlock(addPos.x, addPos.y, addPos.z, blockType, orientation);
+                System.out.println("[RealGame.java] : ajout d'un bloc");
             }
         }
     }

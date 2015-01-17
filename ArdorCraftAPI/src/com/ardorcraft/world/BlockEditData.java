@@ -17,6 +17,7 @@ public class BlockEditData {
         this.pos = pos;
         this.type = type;
         this.orientation = orientation;
+        toString();
     }
 
     @Override

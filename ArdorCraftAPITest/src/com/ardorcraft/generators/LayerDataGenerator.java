@@ -21,6 +21,7 @@ public abstract class LayerDataGenerator implements DataGenerator {
                 generateColumn(x, z, height, blockScene);
             }
         }
+        System.out.println("layer data generatpr");
     }
 
     private void generateColumn(final int x, final int z, final int height, final WorldModifier blockScene) {

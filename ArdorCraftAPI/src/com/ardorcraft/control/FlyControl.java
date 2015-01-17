@@ -30,7 +30,7 @@ public class FlyControl {
 
 	private final Vector3 _upAxis = new Vector3();
 	private double _mouseRotateSpeed = .005;
-	private double _moveSpeed = 15;
+	private double _moveSpeed = 150;
 	private double _keyRotateSpeed = 2.25;
 	private final Matrix3 _workerMatrix = new Matrix3();
 	private final Vector3 _workerStoreA = new Vector3();

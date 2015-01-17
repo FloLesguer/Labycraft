@@ -36,7 +36,7 @@ public class LocalServerDataHandler {
             final File mapFile) {
         this.width = width;
         this.height = height;
-        this.gridSize = gridSize;
+        this.gridSize = 20;
         this.generator = generator;
 
         try {
@@ -101,7 +101,7 @@ public class LocalServerDataHandler {
                 }
 
                 synchronized (generator) {
-                    generator.generateChunk(xx * width, zz * width, xx * width + width, zz * width + width, 1, height,
+                    generator.generateChunk(xx * width, zz * width, xx * width + width, zz * width + width, 1, 3,
                             worldEdit);
                     Thread.yield();
 

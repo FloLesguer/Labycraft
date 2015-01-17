@@ -20,6 +20,7 @@ import javax.swing.JSlider;
 import javax.swing.WindowConstants;
 import javax.swing.border.EmptyBorder;
 
+import com.ardorcraft.generators.GenerateurLabyrinthe;
 import com.ardorcraft.generators.InterpolatedNoiseDataGenerator;
 import com.ardorcraft.generators.NiceDataGenerator;
 
@@ -34,7 +35,7 @@ public class SelectDialog extends JDialog {
     private final JPanel contentPanel = new JPanel();
 
     final Class<?>[] generators = {
-            NiceDataGenerator.class, InterpolatedNoiseDataGenerator.class
+            NiceDataGenerator.class, InterpolatedNoiseDataGenerator.class, GenerateurLabyrinthe.class
     };
     final String[] textures = {
             "terrainQ.png", "terrain.png", "terrainDocu.png", "terrainSMP.png"

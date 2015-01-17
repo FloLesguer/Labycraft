@@ -22,6 +22,7 @@ public class InterpolatedNoiseDataGenerator implements DataGenerator {
     public void generateChunk(final int xStart, final int zStart, final int xEnd, final int zEnd, final int spacing,
             final int height, final WorldModifier blockScene) {
 
+    	System.out.println("interpolate bidule");
         final int waterHeight = height / 3;
         final double noiceCache[][][] = new double[2][2][2];
 

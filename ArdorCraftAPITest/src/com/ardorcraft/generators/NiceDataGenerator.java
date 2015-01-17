@@ -32,10 +32,12 @@ public class NiceDataGenerator implements DataGenerator {
         }
 
         int index = 0;
-        for (final Pos pos : treePositions) {
+       /* for (final Pos pos : treePositions) {
             final int treeHeight = treeHeights.get(index++);
             addTree(blockScene, pos, treeHeight, rand);
-        }
+        }*/
+        
+        System.out.println("génération de chunk");
     }
 
     private final int[] height = new int[] {
@@ -81,7 +83,7 @@ public class NiceDataGenerator implements DataGenerator {
                 0.6f, height, blockScene, rand);
 
         // mountain
-        final double noise1 = ImprovedNoise.noise(x * 0.01, 20, z * 0.01) + 0.5;
+       /* final double noise1 = ImprovedNoise.noise(x * 0.01, 20, z * 0.01) + 0.5;
         final double noise3 = ImprovedNoise.noise(x * 0.05, 20, z * 0.05) + 0.5;
         final double noise2 = ImprovedNoise.noise(x * 0.05, 100, z * 0.05);
         double mul = (localHeight + height / 2.0) / height;
@@ -141,10 +143,14 @@ public class NiceDataGenerator implements DataGenerator {
             for (; localHeight < waterHeight; localHeight++) {
                 blockScene.setBlock(x, localHeight, z, BlockWorld.WATER);
             }
-        }
+        }*/
 
-        for (int y = localHeight; y < height; y++) {
-            blockScene.setBlock(x, y, z, 0);
+        for (int y = 1; y < 2; y++) {
+            blockScene.setBlock(x, y, z, 3);
+        }
+        
+        for (int y = 2; y < 3; y++) {
+            blockScene.setBlock(x, y, z, 2);
         }
     }
 
@@ -184,7 +190,7 @@ public class NiceDataGenerator implements DataGenerator {
 
         for (int y = startheight; y < startheight + localHeight; y++) {
             if (y <= 1) {
-                blockScene.setBlock(x, y, z, 12);
+                blockScene.setBlock(x, y, z, 2);
             }
             final double scaleY = (Math.abs(y - height / 3) + 15.0) / height * 1.5;
             final double scale = 0.05;

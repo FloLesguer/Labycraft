@@ -16,8 +16,9 @@ import com.ardor3d.util.resource.ResourceSource;
  */
 public class WorldSettings {
     private int tileSize = 16;
-    private int tileHeight = 128;
+    private int tileHeight = 0;
     private int gridSize = 16;
+    
 
     private ResourceSource terrainTexture;
     private int terrainTextureTileSize;
@@ -43,6 +44,7 @@ public class WorldSettings {
         tileHeight = settings.tileHeight;
         gridSize = settings.gridSize;
 
+        System.out.println("chargement paramètre");
         terrainTexture = settings.terrainTexture;
         terrainTextureTileSize = settings.terrainTextureTileSize;
         waterTexture = settings.waterTexture;
