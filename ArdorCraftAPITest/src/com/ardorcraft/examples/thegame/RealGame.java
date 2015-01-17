@@ -158,7 +158,7 @@ public class RealGame implements ArdorCraftGame {
             ex.printStackTrace();
         }
 
-        canvas.setTitle("ArdorCraft API Example - RealGame.java");
+        canvas.setTitle("Labycraft");
 
         final SelectDialog dialog = new SelectDialog();
         dialog.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);

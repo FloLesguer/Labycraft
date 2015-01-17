@@ -47,6 +47,7 @@ public class WalkControl {
     private SomeButtonsDownPredicate turnRightPredicate;
     private SomeButtonsDownPredicate turnUpPredicate;
     private SomeButtonsDownPredicate turnDownPredicate;
+    private SomeButtonsDownPredicate run;
     private UprightFPSMoveConfig moveConfigMember;
 
 	public WalkControl(final PlayerBase player, final LogicalLayer layer,
@@ -72,6 +73,8 @@ public class WalkControl {
                 new SomeButtonsDownPredicate(moveConfigMember.TurnUp);
         turnDownPredicate =
                 new SomeButtonsDownPredicate(moveConfigMember.TurnDown);
+        run =
+                new SomeButtonsDownPredicate(moveConfigMember.run);
 	}
 
 	public ReadOnlyVector3 getUpAxis() {
@@ -122,6 +125,12 @@ public class WalkControl {
         }
         if (moveRightPredicate.apply(state)) {
             strafeLR -= 1;
+        }
+        
+        if(run.apply(state)){
+        	_moveSpeed = 1.5;
+        }else{
+        	_moveSpeed = 0.9;
         }
 
 		if (moveFB != 0 || strafeLR != 0) {

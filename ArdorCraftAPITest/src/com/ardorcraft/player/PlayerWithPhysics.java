@@ -17,10 +17,12 @@ public class PlayerWithPhysics extends PlayerWithCollision {
     private double time;
     private final double stepTime = 1.0 / 100.0;
     private boolean walking = false;
+    private boolean running = false;
     private final Vector3 damping = new Vector3(0.85, 1.0, 0.85);
     private final double gravity = -0.3;
     private final double jumpForce = 9;
-    private final double speed = 0.9;
+    private double speed = 0.9;
+    private final double speedRun = 1.5;
 
     private final WalkControl walkControl;
     private final FlyControl flyControl;
@@ -91,6 +93,14 @@ public class PlayerWithPhysics extends PlayerWithCollision {
         if (!jump && isOnGround()) {
             jump = true;
         }
+    }
+    
+    public void setRun(){
+    	this.speed = 1.5;
+    }
+    
+    public void setWalk(){
+    	this.speed = 0.9;
     }
 
     public boolean isWalking() {
