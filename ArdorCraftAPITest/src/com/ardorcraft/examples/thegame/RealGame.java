@@ -1,12 +1,4 @@
-/**
- * Copyright (c) 2008-2010 Ardor Labs, Inc.
- *
- * This file is part of Ardor3D.
- *
- * Ardor3D is free software: you can redistribute it and/or modify it 
- * under the terms of its license which may be found in the accompanying
- * LICENSE file or at <http://www.ardor3d.com/LICENSE>.
- */
+
 
 package com.ardorcraft.examples.thegame;
 
@@ -81,6 +73,9 @@ public class RealGame implements ArdorCraftGame {
     private final int tileSize = 16;
     private final int height = 150;
     private double farPlane = 10000.0;
+    
+    public double montimer = 0.00001;
+    public Boolean jour = true;
 
     private final IntersectionResult intersectionResult = new IntersectionResult();
 
@@ -102,7 +97,7 @@ public class RealGame implements ArdorCraftGame {
     private float globalLight = 1f;
     private boolean isInWater = false;
     private final int[] blockTypeLookup = new int[] {
-            1, 2, 3, 5, 20, 95, 12, 45, 48, 223
+            1, 47, 4, 5, 20, 95, 12, 45, 48, 50
     };
 
     @Override
@@ -113,6 +108,8 @@ public class RealGame implements ArdorCraftGame {
         if (intersectionResult.hit) {
             final Pos hitPos = intersectionResult.pos;
             selectionBox.setTranslation(hitPos.x + 0.5, hitPos.y + 0.5, hitPos.z + 0.5);
+            
+            
         }
 
         camera.setLocation(player.getPosition());
@@ -127,9 +124,40 @@ public class RealGame implements ArdorCraftGame {
         // The infinite world update
         blockWorld.updatePlayer(player.getPosition(), player.getDirection());
         blockWorld.update(timer);
-    }
+        
+        jourNuit();
+        
+        
+     // actualiserTemps();
+        
+        if (montimer > 0.0 && jour == true){
+      	  augmenterTemps();
+    	}
+        if (montimer > 0.01 && jour == true){
+      	  jour = false;
+    	}
+        
+        if (montimer < 0.0 && jour == true){
+      	  jour = false;
+    	}
+        
+        
+        if (jour == false)  {
+    		diminuerTemps();
+    	}
+      }
 
-    @Override
+   
+private void augmenterTemps() {
+	montimer = montimer + 0.00001;
+	}
+	
+	private void diminuerTemps(){
+		montimer = montimer - 0.00001;
+	}
+	
+	
+	@Override
     public void render(final Renderer renderer) {
         // root.draw(renderer);
 
@@ -158,7 +186,7 @@ public class RealGame implements ArdorCraftGame {
             ex.printStackTrace();
         }
 
-        canvas.setTitle("Labycraft");
+        canvas.setTitle("ArdorCraft API Example - RealGame.java");
 
         final SelectDialog dialog = new SelectDialog();
         dialog.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
@@ -258,10 +286,20 @@ public class RealGame implements ArdorCraftGame {
         root.attachChild(selectionBox);
 
         updateLighting();
+        jourNuit();
 
         blockWorld.startThreads();
     }
 
+    public void jourNuit() {
+    	 
+             //globalLight = (float) Math.max(globalLight - tpf * 0.4, 0);
+    		 globalLight = (float) Math.max(globalLight - montimer * 0.4, 0);
+             blockWorld.setGlobalLight(globalLight);
+             updateLighting();
+         }
+    
+    
     private void createText(final String text, final int x, final int y) {
         final BasicText info = BasicText.createDefaultTextLabel("Text2", text, 16);
         info.getSceneHints().setRenderBucketType(RenderBucketType.Ortho);
@@ -411,7 +449,6 @@ public class RealGame implements ArdorCraftGame {
             if (!player.isPlayerSpace(addPos)) {
                 final BlockSide orientation = getOrientation(blockType);
                 blockWorld.setBlock(addPos.x, addPos.y, addPos.z, blockType, orientation);
-                System.out.println("[RealGame.java] : ajout d'un bloc");
             }
         }
     }
