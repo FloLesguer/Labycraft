@@ -35,7 +35,7 @@ public class SelectDialog extends JDialog {
     private final JPanel contentPanel = new JPanel();
 
     final Class<?>[] generators = {
-            NiceDataGenerator.class, InterpolatedNoiseDataGenerator.class, GenerateurLabyrinthe.class
+    		GenerateurLabyrinthe.class, NiceDataGenerator.class, InterpolatedNoiseDataGenerator.class
     };
     final String[] textures = {
             "terrainQ.png", "terrain.png", "terrainDocu.png", "terrainSMP.png"
