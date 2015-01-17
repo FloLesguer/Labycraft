@@ -12,4 +12,5 @@ package com.ardorcraft.collision;
 public interface HitTester {
     boolean isHit(int blockId);
     //Ligne de commentaire
+    //coucou
 }
