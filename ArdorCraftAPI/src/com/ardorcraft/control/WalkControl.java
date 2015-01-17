@@ -48,6 +48,7 @@ public class WalkControl {
     private SomeButtonsDownPredicate turnUpPredicate;
     private SomeButtonsDownPredicate turnDownPredicate;
     private SomeButtonsDownPredicate run;
+    private SomeButtonsDownPredicate position;
     private UprightFPSMoveConfig moveConfigMember;
 
 	public WalkControl(final PlayerBase player, final LogicalLayer layer,
@@ -75,6 +76,8 @@ public class WalkControl {
                 new SomeButtonsDownPredicate(moveConfigMember.TurnDown);
         run =
                 new SomeButtonsDownPredicate(moveConfigMember.run);
+        position =
+        		new SomeButtonsDownPredicate(moveConfigMember.position);
 	}
 
 	public ReadOnlyVector3 getUpAxis() {
@@ -125,6 +128,10 @@ public class WalkControl {
         }
         if (moveRightPredicate.apply(state)) {
             strafeLR -= 1;
+        }
+        
+        if(position.apply(state)){
+        	System.out.println("POSITION JOUEUR : X="+player.getPosition().getX()+" Y="+player.getPosition().getY()+" Z="+player.getPosition().getZ());
         }
         
         if(run.apply(state)){

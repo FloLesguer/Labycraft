@@ -25,6 +25,7 @@ public class UprightFPSMoveConfig
     public ButtonSet TurnUp = new ButtonSet();
     public ButtonSet TurnDown = new ButtonSet();
     public ButtonSet run = new ButtonSet();
+    public ButtonSet position = new ButtonSet();
     
     public UprightFPSMoveConfig()
     {
@@ -38,6 +39,7 @@ public class UprightFPSMoveConfig
         TurnUp.keys.add(Key.UP);
         TurnDown.keys.add(Key.DOWN);
         run.keys.add(Key.LCONTROL);
+        position.keys.add(Key.RCONTROL);
         
         if(config == defaultControls.LeftHanded)
         {

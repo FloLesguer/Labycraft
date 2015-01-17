@@ -246,6 +246,8 @@ public class WalkControlTriggers implements ITriggerGroup
             // player.getTargetVelocity().z = loc.getZ() * 80 *
             // PhysicsSystem.TIMESTEP;
         }
+        
+        
     }
     
     /**
